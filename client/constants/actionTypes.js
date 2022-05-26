@@ -3,3 +3,7 @@
 export const UPDATE_NEW_ROUTINE = 'UPDATE_NEW_ROUTINE'
 
 export const RESET_ROUTINE = 'RESET_ROUTINE'
+
+export const SELECT_DAY = 'SELECT_DAY'
+
+export const SEND_CREATOR = 'SEND_CREATOR'

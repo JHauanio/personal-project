@@ -33,6 +33,8 @@ const WorkoutCreator = (props) => {
         }
         finally {
             props.resetRoutine()
+            props.sendCreator(false)
+            props.selectDay()
             document.querySelector('#woNameField').value = '';
             document.querySelector('#setsField').value = '';
             document.querySelector('#repsField').value = '';

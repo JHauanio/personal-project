@@ -3,7 +3,6 @@ const woController = {}
 
 woController.addRoutine = async (req, res, next) => {
     console.log('in add routine')
-    console.log(req.body)
     const newRoutine = req.body.routine
     const day = req.body.day
     try{
@@ -16,15 +15,13 @@ woController.addRoutine = async (req, res, next) => {
 }
 
 woController.findRoutine = async (req, res, next) => {
-    console.log('in find routine', req.params);
-    const day = req.params.day
     try{
-    const reqdObj = await Workout.findOne(day)
+    const reqdObj = await Workout.findOne(req.params)
     res.locals.routine = reqdObj
     next()
     } catch(error){
         console.log('error in find routine')
         next(error)
-    }
-}
+}}
+
 module.exports = woController;

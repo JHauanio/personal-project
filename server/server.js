@@ -22,6 +22,13 @@ app.post('/submitWorkout',
     res.status(200).send("hello")
   }
 )
+app.get('/routine/:day',
+  workoutController.findRoutine,
+  (req, res) => {
+    if (res.locals.routine === null){res.status(204).send()}
+    res.status(200).send(JSON.stringify(res.locals.routine))
+  }
+)
 
 app.get('/', (req, res) => {
     if (5>6){return res.status(200).sendFile(path.join(__dirname, '../index-sign-in.html'));}

@@ -3,14 +3,9 @@ import { combineReducers } from 'redux';
 
 const initialState = {
     newRoutine : [],
-    mRoutine : [],
-    tRoutine : [],
-    wRoutine : [],
-    thRoutine : [],
-    fRoutine : [],
-    satRoutine : [],
-    sunRoutine : [],
-    stringRoutine : ''
+    stringRoutine : '',
+    inDay : false,
+    emptyDay : true,
 };
 
 const woReducers = (state = initialState, action) => {
@@ -37,9 +32,36 @@ const woReducers = (state = initialState, action) => {
                 stringRoutine
             }
         }
+        case types.SELECT_DAY: {
+            console.log('payload', action.payload)
+            if (action.payload === false){
+                let inDay = false
+                return {
+                    ...state,
+                    inDay
+                }
+            }
+            console.log(action.payload)
+            let inDay = {day : action.payload.day, routine : action.payload.routine}
+            
+            return {
+                ...state,
+                inDay
+            }
+        }
+        case types.SEND_CREATOR: {
+            console.log(action.payload)
+            let emptyDay = (action.payload === false) ? true : false
+            console.log(emptyDay)
+            return {
+                ...state,
+                emptyDay
+            }
+        }
         default: {
             return state;
         }
+
     }
 }
 const reducers = combineReducers({wo : woReducers})
